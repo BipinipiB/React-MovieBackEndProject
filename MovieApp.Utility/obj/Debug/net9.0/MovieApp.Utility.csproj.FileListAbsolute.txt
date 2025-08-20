@@ -1,0 +1,12 @@
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\bin\Debug\net9.0\MovieApp.Utility.deps.json
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\bin\Debug\net9.0\MovieApp.Utility.dll
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\bin\Debug\net9.0\MovieApp.Utility.pdb
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.csproj.AssemblyReference.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.AssemblyInfoInputs.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.AssemblyInfo.cs
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.csproj.CoreCompileInputs.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.dll
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\refint\MovieApp.Utility.dll
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.pdb
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\ref\MovieApp.Utility.dll

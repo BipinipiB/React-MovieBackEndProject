@@ -1,0 +1,15 @@
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.DataAccess.deps.json
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.DataAccess.dll
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.DataAccess.pdb
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.Models.dll
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.Models.pdb
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.csproj.AssemblyReference.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.AssemblyInfoInputs.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.AssemblyInfo.cs
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.EF86DE6C.Up2Date
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.dll
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\refint\MovieApp.DataAccess.dll
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.pdb
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\ref\MovieApp.DataAccess.dll
