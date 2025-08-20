@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MovieApp.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6889e9490ece026cee9000535bedd0d511d27bf7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17824012a5149114cb83b9540ee5502579d73678")]
 [assembly: System.Reflection.AssemblyProductAttribute("MovieApp.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MovieApp.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
