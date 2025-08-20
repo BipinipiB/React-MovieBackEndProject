@@ -1,0 +1,28 @@
+# Ignore Visual Studio folders and files
+.vs/
+*.suo
+*.user
+*.db
+*.cache
+*.log
+*.vsdix
+*.dtbcache.v2
+*.futdcache.v2
+*.manifest
+*.backup.json
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore user-specific settings
+*.user
+*.rsuser
+*.sln.docstates
+
+# Ignore test results
+TestResults/
+*.trx
+
+# Ignore node modules (if using JavaScript/React)
+node_modules/
