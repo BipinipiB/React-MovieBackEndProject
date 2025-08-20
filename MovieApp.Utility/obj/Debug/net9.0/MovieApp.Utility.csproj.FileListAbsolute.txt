@@ -6,6 +6,7 @@ C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieA
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.AssemblyInfoInputs.cache
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.AssemblyInfo.cs
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.csproj.CoreCompileInputs.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.sourcelink.json
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.dll
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\refint\MovieApp.Utility.dll
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Utility\obj\Debug\net9.0\MovieApp.Utility.pdb
