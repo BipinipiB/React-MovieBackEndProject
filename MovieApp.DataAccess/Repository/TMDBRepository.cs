@@ -24,32 +24,19 @@ namespace MovieApp.DataAccess.Repository
             _baseUrl = configuration["Tmdb:BaseUrl"];
         }
 
+        //returns current popular movies in TMDB
         public async Task<List<TMDBMovieDto>> GetPopularMoviesFromApiAsync()
         {
             var response = await _httpClient.GetAsync($"{_baseUrl}/movie/popular?api_key={_apiKey}");
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
             
-
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             };
 
-
             var tmdbResponse = JsonSerializer.Deserialize<TMDBResponse>(json, options);
-
-            if(tmdbResponse.Results != null)
-            {
-                Console.WriteLine($"✅ Deserialized {tmdbResponse.Results.Count} movies");
-
-            }
-            else
-            {
-                Console.WriteLine("⚠️ Deserialization failed — Results is null");
-
-            }
-
 
             return tmdbResponse?.Results ?? new List<TMDBMovieDto>();
 

@@ -1,4 +1,5 @@
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.DataAccess.deps.json
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.DataAccess.runtimeconfig.json
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.DataAccess.dll
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.DataAccess.pdb
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\bin\Debug\net9.0\MovieApp.Models.dll
@@ -13,4 +14,5 @@ C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieA
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.dll
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\refint\MovieApp.DataAccess.dll
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.pdb
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\MovieApp.DataAccess.genruntimeconfig.cache
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.DataAccess\obj\Debug\net9.0\ref\MovieApp.DataAccess.dll

@@ -1007,9 +1007,6 @@
       "MovieApp.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "9.0.8"
-        },
         "compile": {
           "bin/placeholder/MovieApp.Models.dll": {}
         },
@@ -2780,7 +2777,6 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "Microsoft.EntityFrameworkCore >= 9.0.8",
       "MovieApp.DataAccess >= 1.0.0",
       "MovieApp.Models >= 1.0.0"
     ]
@@ -2841,12 +2837,6 @@
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[9.0.8, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",

@@ -1,7 +1,6 @@
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Models\bin\Debug\net9.0\MovieApp.Models.deps.json
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Models\bin\Debug\net9.0\MovieApp.Models.dll
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Models\bin\Debug\net9.0\MovieApp.Models.pdb
-C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Models\obj\Debug\net9.0\MovieApp.Models.csproj.AssemblyReference.cache
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Models\obj\Debug\net9.0\MovieApp.Models.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Models\obj\Debug\net9.0\MovieApp.Models.AssemblyInfoInputs.cache
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Models\obj\Debug\net9.0\MovieApp.Models.AssemblyInfo.cs

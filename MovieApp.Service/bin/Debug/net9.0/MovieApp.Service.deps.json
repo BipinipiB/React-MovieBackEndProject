@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v9.0": {
       "MovieApp.Service/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "9.0.8",
           "MovieApp.DataAccess": "1.0.0",
           "MovieApp.Models": "1.0.0"
         },
@@ -589,9 +588,6 @@
         }
       },
       "MovieApp.Models/1.0.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "9.0.8"
-        },
         "runtime": {
           "MovieApp.Models.dll": {
             "assemblyVersion": "1.0.0.0",
