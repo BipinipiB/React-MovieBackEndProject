@@ -1,6 +1,7 @@
 ﻿
 using MovieApp.DataAccess.Repository.IRepository;
 using MovieApp.Models;
+using MovieApp.Models.DTOs;
 using MovieApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace MovieApp.Service.Services
                         Title = dto.Title,
                         Description = dto.Overview,
                         ReleaseDate = DateTime.Parse(dto.ReleaseDate),
-                        MoviePosterUrl = $"https://image.tmdb.org/t/p/w500{dto.PosterPath}",
+                        PosterPath = $"https://image.tmdb.org/t/p/w500{dto.PosterPath}",
                         IsPopularToday = true
                     };
                     await _movieRepo.AddAsync(movie);
@@ -79,7 +80,7 @@ namespace MovieApp.Service.Services
                         Title = dto.Title,
                         Description = dto.Overview,
                         ReleaseDate = DateTime.Parse(dto.ReleaseDate),
-                        MoviePosterUrl = $"https://image.tmdb.org/t/p/w500{dto.PosterPath}",
+                        PosterPath = dto.PosterPath, //$"https://image.tmdb.org/t/p/w500{dto.PosterPath}",
                         IsPopularToday = true
                     };
                     await _movieRepo.AddAsync(movie);

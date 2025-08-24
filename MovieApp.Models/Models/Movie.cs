@@ -10,7 +10,7 @@
         // The ID from TMDB
         public int TMDBMovieId { get; set; } 
 
-        public string MoviePosterUrl { get; set; }
+        public string PosterPath { get; set; }
 
         public Boolean IsPopularToday { get; set; }
 

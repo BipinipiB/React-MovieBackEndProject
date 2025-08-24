@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MovieApp.DataAccess.Repository.IRepository;
 using MovieApp.Service.Services;
+using MovieApp.Services.Interfaces;
 
 namespace movie_backend.Controllers
 {
@@ -9,10 +11,13 @@ namespace movie_backend.Controllers
     public class MovieProxyController : ControllerBase
     {
         private readonly TMDBService _tmdbService;
+        private readonly IMovieRepository _movieRepo;
 
-        public MovieProxyController(TMDBService tmdbService)
+
+        public MovieProxyController(TMDBService tmdbService, IMovieRepository movieRepo)
         {
             _tmdbService = tmdbService;
+            _movieRepo = movieRepo;
         }
 
         // GET: api/movieproxy/popular
@@ -20,7 +25,8 @@ namespace movie_backend.Controllers
         [HttpGet("popular")]
         public async Task<IActionResult> GetPopularMovies()
         {
-            var movies = await _tmdbService.GetPopularMoviesFromAPIAsync();
+            var movies = await _movieRepo.GetAllPopularMoviesFromDB();
+           
             return Ok(movies);
         }
 

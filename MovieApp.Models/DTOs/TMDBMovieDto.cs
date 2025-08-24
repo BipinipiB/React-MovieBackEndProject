@@ -51,6 +51,8 @@ namespace MovieApp.Models.DTOs
         [JsonPropertyName("video")]
         public bool Video { get; set; }
 
+        public Boolean IsPopularToday { get; set; }
+
 
         //[JsonPropertyName("id")]
         //public int Id { get; set; }
