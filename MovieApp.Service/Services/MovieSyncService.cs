@@ -24,8 +24,8 @@ namespace MovieApp.Service.Services
         {
             // Logic to sync movies from TMDB to the local database
 
-            await _movieService.CreateMoviesAsync();
-
+            await _movieService.CreateOrUpdatePopularMovies();
+           
         }
 
         public void SyncTMDBMovies()

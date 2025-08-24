@@ -17,5 +17,6 @@ namespace MovieApp.DataAccess.Repository.IRepository
         Task UpdateAsync(Movie movie);
         Task<IEnumerable<Movie>> GetAllAsync();
 
+        Task <IEnumerable<Movie>> GetAllPopularMoviesFromDB();
     }
 }

@@ -12,5 +12,8 @@
 
         public string MoviePosterUrl { get; set; }
 
+        public Boolean IsPopularToday { get; set; }
+
+
     }
 }

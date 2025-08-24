@@ -10,5 +10,7 @@ namespace MovieApp.Services.Interfaces
     {
         Task CreateMoviesAsync();
         Task UpdateMoviesAsync();
+
+        Task CreateOrUpdatePopularMovies();
     }
 }

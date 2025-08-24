@@ -35,6 +35,12 @@ namespace MovieApp.DataAccess.Repository
             throw new NotImplementedException();
         }
 
+        // Task<IEnumerable<Movie>> means it returns a collection of Movie objects asynchronously
+        public async Task<IEnumerable<Movie>> GetAllPopularMoviesFromDB()
+        {
+            return await _ApplicationDbcontext.Movies.Where(m => m.IsPopularToday).ToListAsync();
+        }
+
         public async Task<Movie> GetByTMDBIdAsync(int tmdbId)
         {
 

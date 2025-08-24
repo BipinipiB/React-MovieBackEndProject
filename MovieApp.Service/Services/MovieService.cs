@@ -40,11 +40,57 @@ namespace MovieApp.Service.Services
                         Title = dto.Title,
                         Description = dto.Overview,
                         ReleaseDate = DateTime.Parse(dto.ReleaseDate),
-                        MoviePosterUrl = $"https://image.tmdb.org/t/p/w500{dto.PosterPath}"
+                        MoviePosterUrl = $"https://image.tmdb.org/t/p/w500{dto.PosterPath}",
+                        IsPopularToday = true
                     };
                     await _movieRepo.AddAsync(movie);
                 }
             }
+        }
+
+        public async Task CreateOrUpdatePopularMovies()
+        {
+            //1. get all movies set as popular in local db
+
+            var currentPopularMovies = await _movieRepo.GetAllPopularMoviesFromDB();
+
+            //2. set all movies as not popular IsPopularToday = False
+
+            foreach(Movie m in currentPopularMovies)
+            {
+                m.IsPopularToday = false;
+               await  _movieRepo.UpdateAsync(m);
+            }
+
+            //3. Get popular movies for the day from TMDB API
+            var tmdbResponse = _tMDBRepository.GetPopularMoviesFromApiAsync();
+
+            //4. check for each movie if they exist in local Db
+            foreach(var dto in tmdbResponse.Result)
+            {
+                var existingMovie = await _movieRepo.GetByTMDBIdAsync(dto.Id);
+
+                //4.1) If the movie does not exist, create a new movie record
+                if (existingMovie == null)
+                {
+                    var movie = new Movie
+                    {
+                        TMDBMovieId = dto.Id,
+                        Title = dto.Title,
+                        Description = dto.Overview,
+                        ReleaseDate = DateTime.Parse(dto.ReleaseDate),
+                        MoviePosterUrl = $"https://image.tmdb.org/t/p/w500{dto.PosterPath}",
+                        IsPopularToday = true
+                    };
+                    await _movieRepo.AddAsync(movie);
+                }//4.2) If the movie exists, update its IsPopularToday flag to true
+                else
+                {
+                    existingMovie.IsPopularToday = true;
+                    await _movieRepo.UpdateAsync(existingMovie);
+                }
+            }
+
         }
 
         //logic to update movies
@@ -52,5 +98,8 @@ namespace MovieApp.Service.Services
         {
             throw new NotImplementedException();
         }
+
+
+
     }
 }

@@ -22,7 +22,6 @@ namespace MovieApp.DataAccess.Data
             modelBuilder.Entity<Models.Movie>().ToTable("Movies");
             modelBuilder.Entity<Models.User>().ToTable("Users");
             modelBuilder.Entity<Models.FavoriteMovie>().ToTable("FavoriteMovies");
-
         }
     }
 }
