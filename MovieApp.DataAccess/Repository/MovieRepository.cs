@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MovieApp.DataAccess.Data;
+using Microsoft.Identity.Client;
 
 
 namespace MovieApp.DataAccess.Repository
@@ -21,9 +22,12 @@ namespace MovieApp.DataAccess.Repository
             _ApplicationDbcontext = applicationDBContext;
         }
 
-        public Task AddAsync(Movie movie)
+        //Task is returned as part of asynchronous operation to indicate asynchronous execution is complete
+        //Add new movie in the database
+        public async Task AddAsync(Movie movie)
         {
-            throw new NotImplementedException();
+            await _ApplicationDbcontext.Movies.AddAsync(movie);
+            await _ApplicationDbcontext.SaveChangesAsync();
         }
 
         public Task<IEnumerable<Movie>> GetAllAsync()
@@ -31,14 +35,20 @@ namespace MovieApp.DataAccess.Repository
             throw new NotImplementedException();
         }
 
-        public Task<Movie> GetByTMDBIdAsync(int tmdbId)
+        public async Task<Movie> GetByTMDBIdAsync(int tmdbId)
         {
-            throw new NotImplementedException();
+
+            var movie = await _ApplicationDbcontext.Movies.FirstOrDefaultAsync(m => m.TMDBMovieId == tmdbId);
+
+            return movie;
         }
 
-        public Task UpdateAsync(Movie movie)
+        //Update movie in database
+        public async Task UpdateAsync(Movie movie)
         {
-            throw new NotImplementedException();
+            //no await because Update method is synchronous
+            _ApplicationDbcontext.Movies.Update(movie);
+            await _ApplicationDbcontext.SaveChangesAsync();
         }
     }
 }

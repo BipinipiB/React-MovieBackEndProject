@@ -1,3 +1,4 @@
+using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using MovieApp.DataAccess.Data;
 using MovieApp.DataAccess.Repository;
@@ -72,13 +73,28 @@ builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<MovieSyncService>();
 
 //register hangfire
-//builder.Services.AddHangfire(config =>
-//    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHangfire(config =>
+    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//builder.Services.AddHangfireServer();
-
+builder.Services.AddHangfireServer();
 
 var app = builder.Build();
+
+
+// Register the MovieSyncService to run periodically
+//This service will sync movies from TMDB to the local database weekly
+using (var scope = app.Services.CreateScope())
+{
+    var recurringJobs = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+    recurringJobs.AddOrUpdate<MovieSyncService>(
+        "sync-tmdb-movies",
+        service => service.SyncTMDBMovies(),
+        Cron.Daily
+    );
+}
+
+
+Console.WriteLine("[Startup] TMDB sync job triggered.");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -87,6 +103,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Add hangfire dashboard
+//visit http://localhost:5000/hangfire to access the dashboard  5000=> Port
+app.UseHangfireDashboard();
 
 //apply CORS
 app.UseCors("AllowReactApp");

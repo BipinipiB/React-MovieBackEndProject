@@ -20,7 +20,7 @@ namespace movie_backend.Controllers
         [HttpGet("popular")]
         public async Task<IActionResult> GetPopularMovies()
         {
-            var movies = await _tmdbService.GetPopularMoviesAsync();
+            var movies = await _tmdbService.GetPopularMoviesFromAPIAsync();
             return Ok(movies);
         }
 

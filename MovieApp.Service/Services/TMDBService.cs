@@ -21,7 +21,7 @@ namespace MovieApp.Service.Services
         }
 
 
-        public async Task<object> GetPopularMoviesAsync()
+        public async Task<object> GetPopularMoviesFromAPIAsync()
         {
 
             return await _tmdbRepository.GetPopularMoviesFromApiAsync();

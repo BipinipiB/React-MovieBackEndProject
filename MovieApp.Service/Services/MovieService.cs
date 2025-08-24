@@ -21,6 +21,7 @@ namespace MovieApp.Service.Services
             _movieRepo = movieRepo;
         }
 
+        //creates movies in the database
         public async Task CreateMoviesAsync()
         {
             var tmdbResponse = _tMDBRepository.GetPopularMoviesFromApiAsync();
@@ -37,7 +38,7 @@ namespace MovieApp.Service.Services
                     {
                         TMDBMovieId = dto.Id,
                         Title = dto.Title,
-                        //Description = dto.Overview,
+                        Description = dto.Overview,
                         ReleaseDate = DateTime.Parse(dto.ReleaseDate),
                         MoviePosterUrl = $"https://image.tmdb.org/t/p/w500{dto.PosterPath}"
                     };
