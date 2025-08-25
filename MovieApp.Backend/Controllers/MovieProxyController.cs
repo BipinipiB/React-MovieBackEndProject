@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieApp.DataAccess.Repository.IRepository;
+using MovieApp.Models.DTOs;
+using MovieApp.Service.Interfaces;
 using MovieApp.Service.Services;
 using MovieApp.Services.Interfaces;
+using System.Runtime.CompilerServices;
 
 namespace movie_backend.Controllers
 {
@@ -12,12 +15,14 @@ namespace movie_backend.Controllers
     {
         private readonly TMDBService _tmdbService;
         private readonly IMovieRepository _movieRepo;
+        private readonly IUserService _userService;
 
 
-        public MovieProxyController(TMDBService tmdbService, IMovieRepository movieRepo)
+        public MovieProxyController(TMDBService tmdbService, IMovieRepository movieRepo, IUserService userService)
         {
             _tmdbService = tmdbService;
             _movieRepo = movieRepo;
+            _userService = userService;
         }
 
         // GET: api/movieproxy/popular
@@ -37,6 +42,26 @@ namespace movie_backend.Controllers
             var results = await _tmdbService.SearchMoviesAsync(query);
             return Ok(results);
         }
+
+        //Post: api/movieproxy/register
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterUser(RegisterDto dto)
+        {
+
+            var result = await _userService.RegisterAsync(dto);
+            return Ok(result);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginDto loginDto)
+        {
+            var results = await _userService.AuthenticateAsync(loginDto);
+
+            return  Ok(results);
+        }
+        
+
+        //}
 
     }
 }

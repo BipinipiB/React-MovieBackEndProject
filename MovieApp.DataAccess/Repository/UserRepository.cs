@@ -8,10 +8,10 @@ namespace MovieApp.DataAccess.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private readonly ApplicationDBContext _context;
+        private readonly ApplicationDBContext _dbContext;
         public UserRepository( ApplicationDBContext context)
         {
-            _context = context;
+            _dbContext = context;
 
         }
 
@@ -20,53 +20,22 @@ namespace MovieApp.DataAccess.Repository
             throw new NotImplementedException();
         }
 
-        public Task<(bool Success, string? ErrorMessage)> RegisterUserAsync(RegisterDto dto)
+        public async Task<(bool Success, string? ErrorMessage)> RegisterUserAsync(User user)
         {
-            throw new NotImplementedException();
+            _dbContext.Users.Add(user);
+            await _dbContext.SaveChangesAsync();
+            return (true, null);
+        }
+        
+
+        //returns True when user already exists
+        public async Task<(bool UsernameExists, bool EmailExists)> DoesUserExist(string username, string email)
+        {
+            var usernameExists = await _dbContext.Users.AnyAsync(u => u.Username == username);
+            var emailExists = await _dbContext.Users.AnyAsync(u => u.Email == email);
+
+            return (usernameExists, emailExists);
         }
 
-        //public async Task<(bool Success, string? Token, string? ErrorMessage)> AuthenticateUserAsync(LoginDto dto)
-        //{
-        //    var user = await _context.Users
-        //         .FirstOrDefaultAsync(u => u.Email == dto.Identifier || u.Username == dto.Identifier);
-
-        //    if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
-        //    {
-        //        return (false, null, "Invalid credentials");
-        //    }
-
-        //    return (true, "", null);
-        //}
-
-        //public async Task<(bool Success, string? ErrorMessage)> RegisterUserAsync(RegisterDto dto)
-        //{
-        //    var existingUser = await _context.Users
-        //       .FirstOrDefaultAsync(u => u.Email == dto.Email || u.Username == dto.Username);
-
-        //    if (existingUser != null)
-        //    {
-        //        if (existingUser.Email == dto.Email)
-        //        {
-        //            return (false, "Email already in use");
-        //        }
-        //        if (existingUser.Username == dto.Username)
-        //        {
-        //            return (false, "Username already in use");
-        //        }
-        //    }
-
-        //    var passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-
-        //    var user = new User
-        //    {
-        //        Username = dto.Username,
-        //        Email = dto.Email,
-        //        PasswordHash = passwordHash
-        //    };
-
-        //    _context.Users.Add(user);
-        //    await _context.SaveChangesAsync();
-        //    return (true, null);
-        //}
     }
 }

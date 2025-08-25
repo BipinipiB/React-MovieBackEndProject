@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MovieApp.DataAccess.Data;
 using MovieApp.DataAccess.Repository;
 using MovieApp.DataAccess.Repository.IRepository;
+using MovieApp.Service.Interfaces;
 using MovieApp.Service.Services;
 using MovieApp.Services.Interfaces;
 
@@ -36,7 +37,7 @@ builder.Services.AddScoped<TMDBService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 //register the UserService
-builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IUserService,UserService>();
 
 //register swagger services
 builder.Services.AddEndpointsApiExplorer();
@@ -80,6 +81,8 @@ builder.Services.AddHangfire(config =>
 builder.Services.AddHangfireServer();
 
 var app = builder.Build();
+
+
 
 
 // Register the MovieSyncService to run periodically

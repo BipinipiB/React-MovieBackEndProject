@@ -2,12 +2,13 @@
 using MovieApp.DataAccess.Repository.IRepository;
 using MovieApp.Models;
 using MovieApp.Models.DTOs;
+using MovieApp.Service.Interfaces;
 
 
 
 namespace MovieApp.Service.Services
 {
-    public class UserService
+    public class UserService:IUserService
     {
         private readonly IUserRepository _userRepository;
 
@@ -20,37 +21,33 @@ namespace MovieApp.Service.Services
         public async Task<(bool Success, string? ErrorMessage)> RegisterAsync(RegisterDto dto)
         {
 
+            // check if user already exists with same username or email
+            var UserAlreadyExists = await _userRepository.DoesUserExist(dto.Username, dto.Email);
 
-            return await _userRepository.RegisterUserAsync(dto);
+            if (UserAlreadyExists.UsernameExists)
+            {
+                return (false, "Username already in use");
+            }
 
+            if (UserAlreadyExists.EmailExists)
+            {
+                return (false, "Email already in use");
+            }
 
-            //var existingUser = await _context.Users
-            //    .FirstOrDefaultAsync(u => u.Email == dto.Email || u.Username == dto.Username);
+            //encrypt password with BCrypt hash
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
 
-            //if (existingUser != null)
-            //{
-            //    if (existingUser.Email == dto.Email)
-            //    {
-            //        return (false, "Email already in use");
-            //    }
-            //    if (existingUser.Username == dto.Username)
-            //    {
-            //        return (false, "Username already in use");
-            //    }
-            //}
+            var user = new User
+            {
+                Username = dto.Username,
+                Email = dto.Email,
+                PasswordHash = passwordHash
+            };
 
-            //var passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-
-            //var user = new User
-            //{
-            //    Username = dto.Username,
-            //    Email = dto.Email,
-            //    PasswordHash = passwordHash
-            //};
-
-            //_context.Users.Add(user);
-            //await _context.SaveChangesAsync();
-            //return (true, null);
+            //register user
+            var result = await _userRepository.RegisterUserAsync(user);
+ 
+            return (result.Success, result.ErrorMessage);
         }
 
         public async Task<(bool Success, string? Token, string? ErrorMessage)> AuthenticateAsync(LoginDto dto)
