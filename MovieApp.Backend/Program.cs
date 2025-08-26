@@ -6,6 +6,7 @@ using MovieApp.DataAccess.Repository.IRepository;
 using MovieApp.Service.Interfaces;
 using MovieApp.Service.Services;
 using MovieApp.Services.Interfaces;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,9 +83,6 @@ builder.Services.AddHangfireServer();
 
 var app = builder.Build();
 
-
-
-
 // Register the MovieSyncService to run periodically
 //This service will sync movies from TMDB to the local database weekly
 using (var scope = app.Services.CreateScope())
@@ -106,6 +104,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
+    //maps the scalar API reference
+    app.MapScalarApiReference();
 }
 
 //Add hangfire dashboard

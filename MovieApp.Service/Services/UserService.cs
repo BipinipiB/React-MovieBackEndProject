@@ -20,7 +20,6 @@ namespace MovieApp.Service.Services
 
         public async Task<(bool Success, string? ErrorMessage)> RegisterAsync(RegisterDto dto)
         {
-
             // check if user already exists with same username or email
             var UserAlreadyExists = await _userRepository.DoesUserExist(dto.Username, dto.Email);
 
@@ -50,9 +49,29 @@ namespace MovieApp.Service.Services
             return (result.Success, result.ErrorMessage);
         }
 
-        public async Task<(bool Success, string? Token, string? ErrorMessage)> AuthenticateAsync(LoginDto dto)
+        public async Task<(bool Success, string? Token, string? ErrorMessage)> LoginUser(LoginDto dto)
         {
-            return await _userRepository.AuthenticateUserAsync(dto);
+
+            User user = await _userRepository.FindUserByUsernameOrEmail(dto.Identifier);
+
+            //If user is not found return error
+            if (user.Id == 0)
+            {
+                return (false, null, "Username or password invalid.");
+            }
+
+            //Verify password
+            bool passwordValid = BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash);
+
+            if(!passwordValid)
+            {
+                return (false, null, "Username or password invalid.");
+            }
+
+            string token = "Success";
+
+            return(true, token, "login Successful");
+
         }
 
 

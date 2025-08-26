@@ -11,7 +11,7 @@ namespace MovieApp.Service.Interfaces
     {
 
         Task<(bool Success, string? ErrorMessage)> RegisterAsync(RegisterDto dto);
-        Task<(bool Success, string? Token, string? ErrorMessage)> AuthenticateAsync(LoginDto dto);
+        Task<(bool Success, string? Token, string? ErrorMessage)> LoginUser(LoginDto dto);
 
     }
 }

@@ -47,7 +47,6 @@ namespace movie_backend.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> RegisterUser(RegisterDto dto)
         {
-
             var result = await _userService.RegisterAsync(dto);
             return Ok(result);
         }
@@ -55,9 +54,15 @@ namespace movie_backend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
-            var results = await _userService.AuthenticateAsync(loginDto);
+            var results = await _userService.LoginUser(loginDto);
 
-            return  Ok(results);
+            if(results.Success)
+            {
+               return Ok(results);
+            }
+
+            return Unauthorized(results);
+           
         }
         
 

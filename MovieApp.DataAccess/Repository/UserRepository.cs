@@ -15,10 +15,16 @@ namespace MovieApp.DataAccess.Repository
 
         }
 
-        public Task<(bool Success, string? Token, string? ErrorMessage)> AuthenticateUserAsync(LoginDto dto)
-        {
-            throw new NotImplementedException();
-        }
+        //public Task<(bool Success, string? Token, string? ErrorMessage)> AuthenticateUserAsync(string identifier)
+        //{
+            
+        //   var userExists = _dbContext.Users.Any(u => u.Username == identifier || u.Email == identifier);
+
+        //   if (userExists)
+        //   {
+        //        return userExists
+        //   }
+        //}
 
         public async Task<(bool Success, string? ErrorMessage)> RegisterUserAsync(User user)
         {
@@ -26,7 +32,6 @@ namespace MovieApp.DataAccess.Repository
             await _dbContext.SaveChangesAsync();
             return (true, null);
         }
-        
 
         //returns True when user already exists
         public async Task<(bool UsernameExists, bool EmailExists)> DoesUserExist(string username, string email)
@@ -37,5 +42,12 @@ namespace MovieApp.DataAccess.Repository
             return (usernameExists, emailExists);
         }
 
+        public async Task<User> FindUserByUsernameOrEmail(string identifier)
+        {
+           var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Username == identifier || u.Email == identifier);
+
+            //if user is null return new empty user object
+            return user ?? new User();
+        }
     }
 }
