@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieApp.Models.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,10 @@ namespace MovieApp.Services.Interfaces
         Task UpdateMoviesAsync();
 
         Task CreateOrUpdatePopularMovies();
+
+        Task<bool> AddFavoriteMovies(int movieId, int userId);
+
+        Task RemoveFavoriteMovie(MovieDto movieDto);
+
     }
 }

@@ -4,12 +4,15 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <!-- links your project to a local, secure secrets store scoped to your machine-->
+     <UserSecretsId> c5c06e7c-574b-41ed-80b8-40f2c783c9fe</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Hangfire" Version="1.8.21" />
     <PackageReference Include="Hangfire.AspNetCore" Version="1.8.21" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.8.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">

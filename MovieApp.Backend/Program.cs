@@ -1,17 +1,51 @@
 using Hangfire;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MovieApp.DataAccess.Data;
 using MovieApp.DataAccess.Repository;
 using MovieApp.DataAccess.Repository.IRepository;
+using MovieApp.Service;
 using MovieApp.Service.Interfaces;
 using MovieApp.Service.Services;
 using MovieApp.Services.Interfaces;
 using Scalar.AspNetCore;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
+/* AppSettings and Configuraion */
+// 1. Core config sources
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile(
+      $"appsettings.{builder.Environment.EnvironmentName}.json",
+      optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
+
+
+//Add the Default Authentication Scheme as JWT Bearer
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        var appSettings = builder.Configuration.GetSection("AppSettings").Get<AppSettings>();
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = appSettings.Issuer,
+            ValidAudience = appSettings.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(appSettings.Token))
+        };
+    });
+
+
+// Add services to the container
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -39,6 +73,30 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 //register the UserService
 builder.Services.AddScoped<IUserService,UserService>();
+
+//register the ITokenService
+builder.Services.AddScoped<ITokenService, TokenService>();
+
+ 
+/* AppSettings and Configuraion  Code second part STARTS */
+
+//load user secrets in development environment
+//Note: user secrets were added via Developer PowerShell or Command line
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddUserSecrets<Program>();
+}
+
+
+//register configuration
+//this tells .NET to load the "AppSettings" section from appsettings.json into AppSettings class( inside Service model)
+// and make it available via DI
+builder.Services.Configure<AppSettings>(
+    builder.Configuration.GetSection("AppSettings"));
+
+
+/* AppSettings and Configuraion  Code second part ENDS */
+
 
 //register swagger services
 builder.Services.AddEndpointsApiExplorer();
@@ -69,11 +127,13 @@ builder.Services.AddScoped<ITMDBRepository, TMDBRepository>();
 //register IMovieService
 builder.Services.AddScoped<IMovieService, MovieService>();
 
-
 //register MovieSyncService.
 //registered MovieSyncService even though it is not Interface because
 //it is used to run a background job with Hangfire
 builder.Services.AddScoped<MovieSyncService>();
+
+//register TokenService
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 //register hangfire
 builder.Services.AddHangfire(config =>
@@ -96,8 +156,6 @@ using (var scope = app.Services.CreateScope())
 }
 
 
-Console.WriteLine("[Startup] TMDB sync job triggered.");
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -116,6 +174,8 @@ app.UseHangfireDashboard();
 app.UseCors("AllowReactApp");
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

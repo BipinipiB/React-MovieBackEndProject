@@ -1,21 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MovieApp.DataAccess.Repository.IRepository;
 using MovieApp.Models;
 using MovieApp.Models.DTOs;
 using MovieApp.Service.Interfaces;
+using System.Security.Claims;
+using System.Text;
 
 
 
 namespace MovieApp.Service.Services
 {
-    public class UserService:IUserService
+    public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly ITokenService _tokenService;
 
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, ITokenService tokenService)
         {
             _userRepository = userRepository;
+            _tokenService = tokenService;
         }
 
         public async Task<(bool Success, string? ErrorMessage)> RegisterAsync(RegisterDto dto)
@@ -45,10 +50,11 @@ namespace MovieApp.Service.Services
 
             //register user
             var result = await _userRepository.RegisterUserAsync(user);
- 
+
             return (result.Success, result.ErrorMessage);
         }
 
+        //Login user
         public async Task<(bool Success, string? Token, string? ErrorMessage)> LoginUser(LoginDto dto)
         {
 
@@ -63,17 +69,19 @@ namespace MovieApp.Service.Services
             //Verify password
             bool passwordValid = BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash);
 
-            if(!passwordValid)
+            if (!passwordValid)
             {
                 return (false, null, "Username or password invalid.");
             }
 
-            string token = "Success";
+            //get new token
+            string token = _tokenService.CreateToken(user);
 
-            return(true, token, "login Successful");
+            return (true, token, "login Successful");
 
         }
 
-
+        
     }
+      
 }

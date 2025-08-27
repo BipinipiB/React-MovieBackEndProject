@@ -94,6 +94,25 @@ namespace MovieApp.Service.Services
 
         }
 
+
+
+        //Add movie to user's favorite list
+
+        public Task<bool> AddFavoriteMovies(int movieId, int userId)
+        {
+
+           Console.WriteLine("AddFavoriteMovies method called with MovieDto: " + movieId);
+
+            return Task.FromResult(true);
+        }
+
+        //Remove movie from user's favorite list
+        public Task RemoveFavoriteMovie(MovieDto movieDto)
+        {
+            throw new NotImplementedException();
+        }
+
+
         //logic to update movies
         public Task UpdateMoviesAsync()
         {

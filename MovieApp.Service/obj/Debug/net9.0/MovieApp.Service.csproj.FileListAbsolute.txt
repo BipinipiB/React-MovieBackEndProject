@@ -1,3 +1,9 @@
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.csproj.AssemblyReference.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.AssemblyInfoInputs.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.AssemblyInfo.cs
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.csproj.CoreCompileInputs.cache
+C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.sourcelink.json
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\bin\Debug\net9.0\MovieApp.Service.deps.json
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\bin\Debug\net9.0\MovieApp.Service.dll
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\bin\Debug\net9.0\MovieApp.Service.pdb
@@ -5,12 +11,6 @@ C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieA
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\bin\Debug\net9.0\MovieApp.Models.dll
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\bin\Debug\net9.0\MovieApp.DataAccess.pdb
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\bin\Debug\net9.0\MovieApp.Models.pdb
-C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.csproj.AssemblyReference.cache
-C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.AssemblyInfoInputs.cache
-C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.AssemblyInfo.cs
-C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.csproj.CoreCompileInputs.cache
-C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.sourcelink.json
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.0F654F2B.Up2Date
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\MovieApp.Service.dll
 C:\Users\bipin\OneDrive\Desktop\LearninHighCode\React-MovieBackEndProject\MovieApp.Service\obj\Debug\net9.0\refint\MovieApp.Service.dll
