@@ -17,6 +17,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 /* AppSettings and Configuraion */
 // 1. Core config sources
+// Load configuration from appsettings.json and environment-specific appsettings file
+//This block of code is responsible for loading configuration settings from JSON files and environment variables.
 builder.Configuration
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddJsonFile(
@@ -26,6 +28,8 @@ builder.Configuration
 
 
 //Add the Default Authentication Scheme as JWT Bearer
+//This tells .NET that we will be using JWT Bearer tokens for authentication
+//Also the checklist of items to validate in the token
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -33,9 +37,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
         options.TokenValidationParameters = new TokenValidationParameters
         {
+            //validate who issued the token
             ValidateIssuer = true,
+            // validate the intended audience
             ValidateAudience = true,
+            //validate the token is not expired
             ValidateLifetime = true,
+            //validate the signing key is valid and trusted
             ValidateIssuerSigningKey = true,
             ValidIssuer = appSettings.Issuer,
             ValidAudience = appSettings.Audience,
@@ -78,7 +86,7 @@ builder.Services.AddScoped<IUserService,UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
  
-/* AppSettings and Configuraion  Code second part STARTS */
+/***************** AppSettings and Configuraion  Code second part STARTS ************************************/
 
 //load user secrets in development environment
 //Note: user secrets were added via Developer PowerShell or Command line
@@ -87,16 +95,13 @@ if (builder.Environment.IsDevelopment())
     builder.Configuration.AddUserSecrets<Program>();
 }
 
-
 //register configuration
 //this tells .NET to load the "AppSettings" section from appsettings.json into AppSettings class( inside Service model)
 // and make it available via DI
 builder.Services.Configure<AppSettings>(
     builder.Configuration.GetSection("AppSettings"));
 
-
 /* AppSettings and Configuraion  Code second part ENDS */
-
 
 //register swagger services
 builder.Services.AddEndpointsApiExplorer();

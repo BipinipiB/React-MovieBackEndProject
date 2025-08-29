@@ -68,7 +68,6 @@ namespace movie_backend.Controllers
                return Ok(results);
                
             }
-
             return Unauthorized(results);
            
         }
