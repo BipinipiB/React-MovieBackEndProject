@@ -71,7 +71,7 @@ builder.Services.AddHttpClient<TMDBService>();
 //register the TMDBRepository with the ITMDBRepository interface
 //AddHttpsClient becasuee this interface is used to call TMDB API
 builder.Services.AddHttpClient<TMDBRepository>();
-
+//regis
 
 //register the TMDBService
 builder.Services.AddScoped<TMDBService>();
@@ -114,7 +114,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
         builder => builder
-            .WithOrigins("http://localhost:5174") // React dev server "http://localhost:5174",
+            .WithOrigins("http://localhost:5173") // React dev server "http://localhost:5174",
             .AllowAnyHeader()
             .AllowAnyMethod());
 });

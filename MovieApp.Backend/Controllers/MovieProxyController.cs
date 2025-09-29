@@ -65,8 +65,16 @@ namespace movie_backend.Controllers
            Console.WriteLine("bipinToken: " + results.Token);
             if (results.Success)
             {
-               return Ok(results);
-               
+                var response = new LoginResponse
+                {
+                    Success = true,
+                    Token = results.Token,
+                    ErrorMessage = results.ErrorMessage,
+                    Username = loginDto.Identifier
+                };
+                return Ok(response);
+
+                
             }
             return Unauthorized(results);
            
