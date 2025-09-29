@@ -72,9 +72,9 @@ namespace movie_backend.Controllers
                     ErrorMessage = results.ErrorMessage,
                     Username = loginDto.Identifier
                 };
+
                 return Ok(response);
 
-                
             }
             return Unauthorized(results);
            
