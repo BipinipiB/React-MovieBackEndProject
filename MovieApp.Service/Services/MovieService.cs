@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Identity.Client;
+using MovieApp.DataAccess.Data;
 using MovieApp.DataAccess.Repository.IRepository;
 using MovieApp.Models;
 using MovieApp.Models.DTOs;
@@ -94,16 +96,38 @@ namespace MovieApp.Service.Services
 
         }
 
-
-
         //Add movie to user's favorite list
-
-        public Task<bool> AddFavoriteMovies(int movieId, int userId)
+        public async Task<bool>  AddFavoriteMovies(int movieId, int userId)
         {
 
-           Console.WriteLine("AddFavoriteMovies method called with MovieDto: " + movieId);
+            var userFavoriteMovie = new FavoriteMovie()
+            {
+                UserId = userId,
+                MovieId = movieId
+            };
 
-            return Task.FromResult(true);
+           await _movieRepo.AddFavoriteMovie(userFavoriteMovie);
+
+            return true;
+        }
+
+        public async Task<IEnumerable<Movie>> GetFavoriteMoviesByUserId(int userId)
+        {
+            List<Movie> favMovies = new List<Movie>();
+
+            var favoriteMovies = await _movieRepo.GetFavoriteMoviesByUserId(userId);
+
+            foreach (FavoriteMovie FM in favoriteMovies)
+            {
+                var movie = await _movieRepo.GetMovieByMovieId(FM.MovieId);
+                if (movie != null)
+                {
+                    favMovies.Add(movie);
+                }
+
+            }
+
+            return favMovies;
         }
 
         //Remove movie from user's favorite list

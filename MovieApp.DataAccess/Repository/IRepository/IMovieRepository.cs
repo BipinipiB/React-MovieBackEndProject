@@ -14,10 +14,15 @@ namespace MovieApp.DataAccess.Repository.IRepository
     {
         //returns movie by TMDB ID
         Task<Movie> GetByTMDBIdAsync(int tmdbId);
+
+        Task<Movie> GetMovieByMovieId(int movieId);
         Task AddAsync(Movie movie);
         Task UpdateAsync(Movie movie);
         Task<IEnumerable<Movie>> GetAllAsync();
 
+        Task AddFavoriteMovie(FavoriteMovie favoriteMov);
+
+        Task<IEnumerable<FavoriteMovie>> GetFavoriteMoviesByUserId(int userId);
         Task <IEnumerable<Movie>> GetAllPopularMoviesFromDB();
     }
 }

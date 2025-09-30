@@ -99,7 +99,22 @@ namespace movie_backend.Controllers
             return Ok("Movie saved to favorites.");
         }
 
+        [Authorize]
+        [HttpGet("userfavoritemovies")]
 
+        public async Task<IActionResult> GetUserFavoriteMovies()
+        {
+            // Extract user ID from the JWT token claims
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+            {
+                return Unauthorized("User ID not found or invalid in token.");
+            }
 
+            //get favorite movies by user id
+            var favMovies = await _movieService.GetFavoriteMoviesByUserId(userId);
+
+            return Ok(favMovies);
+        }
     }
 }

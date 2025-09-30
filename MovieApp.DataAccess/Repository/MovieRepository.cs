@@ -31,6 +31,13 @@ namespace MovieApp.DataAccess.Repository
             await _ApplicationDbcontext.SaveChangesAsync();
         }
 
+        public async Task  AddFavoriteMovie(FavoriteMovie favoriteMov)
+        {
+           await _ApplicationDbcontext.FavoriteMovies.AddAsync(favoriteMov);
+           await _ApplicationDbcontext.SaveChangesAsync();
+
+        }
+
         public Task<IEnumerable<Movie>> GetAllAsync()
         {
             throw new NotImplementedException();
@@ -48,6 +55,19 @@ namespace MovieApp.DataAccess.Repository
             var movie = await _ApplicationDbcontext.Movies.FirstOrDefaultAsync(m => m.TMDBMovieId == tmdbId);
 
             return movie;
+        }
+
+        public async Task<IEnumerable<FavoriteMovie>> GetFavoriteMoviesByUserId(int userId)
+        {
+            List<FavoriteMovie> userFavoriteMovies = new List<FavoriteMovie>();
+            userFavoriteMovies =await _ApplicationDbcontext.FavoriteMovies.Where(m => m.UserId == userId).ToListAsync();
+            return userFavoriteMovies;
+        }
+
+        public async Task<Movie> GetMovieByMovieId(int movieId)
+        {
+
+            return  await _ApplicationDbcontext.Movies.FirstOrDefaultAsync(m => m.MovieId == movieId);
         }
 
         //Update movie in database

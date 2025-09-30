@@ -1,4 +1,5 @@
-﻿using MovieApp.Models.DTOs;
+﻿using MovieApp.Models;
+using MovieApp.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace MovieApp.Services.Interfaces
         Task<bool> AddFavoriteMovies(int movieId, int userId);
 
         Task RemoveFavoriteMovie(MovieDto movieDto);
+        Task<IEnumerable<Movie>> GetFavoriteMoviesByUserId(int userId);
 
     }
 }
