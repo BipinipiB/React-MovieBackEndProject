@@ -85,7 +85,8 @@ builder.Services.AddScoped<IUserService,UserService>();
 //register the ITokenService
 builder.Services.AddScoped<ITokenService, TokenService>();
 
- 
+
+
 /***************** AppSettings and Configuraion  Code second part STARTS ************************************/
 
 //load user secrets in development environment
@@ -102,6 +103,15 @@ builder.Services.Configure<AppSettings>(
     builder.Configuration.GetSection("AppSettings"));
 
 /* AppSettings and Configuraion  Code second part ENDS */
+
+// Register SecretService as a singleton --- A singleton service is created once for the entire lifetime of the application.
+//SecretService just reads secrets from configuration — it doesn’t store per-request data.
+builder.Services.AddSingleton<SecretsService>();
+
+//register the IEmailService
+builder.Services.AddScoped<IEmailService, EmailService>();
+
+
 
 //register swagger services
 builder.Services.AddEndpointsApiExplorer();
@@ -187,3 +197,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+Console.WriteLine("From Configuration:");
+Console.WriteLine(builder.Configuration["AppSettings:SendGridApiKey"]); // should print key
+

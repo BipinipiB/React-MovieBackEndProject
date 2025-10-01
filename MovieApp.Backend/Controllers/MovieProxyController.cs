@@ -20,15 +20,18 @@ namespace movie_backend.Controllers
         private readonly IMovieRepository _movieRepo;
         private readonly IUserService _userService;
         private readonly IMovieService _movieService;
+        private readonly IEmailService  _emailService;
 
 
         public MovieProxyController(TMDBService tmdbService, IMovieRepository movieRepo, 
-                IUserService userService, IMovieService movieService)
+                IUserService userService, IMovieService movieService, IEmailService emailService)
         {
             _tmdbService = tmdbService;
             _movieRepo = movieRepo;
             _userService = userService;
             _movieService = movieService;
+            _emailService = emailService;
+
         }
 
         // GET: api/movieproxy/popular
@@ -55,17 +58,13 @@ namespace movie_backend.Controllers
         {
             var result = await _userService.RegisterAsync(dto);
 
-            
             //Send confirmation email
-
             string emailSubject = "Welcome to MyMovieApp!";
             string toEmail ="foldingchair@tgest.com";
             string username = dto.Username;
             string emailMessage = $"Hi {dto.Username},\n\nThank you for registering at MyMovieApp. We're excited to have you on board!\n\nBest regards,\nThe MyMovieApp Team";
-
-            EmailService emailService = new EmailService();
-
-            await emailService.SendEmail(emailSubject, toEmail, username, emailMessage);
+            
+            await _emailService.SendEmail(emailSubject, toEmail, username, emailMessage);
 
             return Ok(result);
 
@@ -76,7 +75,7 @@ namespace movie_backend.Controllers
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
             var results = await _userService.LoginUser(loginDto);
-           Console.WriteLine("bipinToken: " + results.Token);
+            Console.WriteLine("bipinToken: " + results.Token);
             if (results.Success)
             {
                 var response = new LoginResponse

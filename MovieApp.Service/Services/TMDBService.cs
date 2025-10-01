@@ -15,8 +15,8 @@ namespace MovieApp.Service.Services
         public TMDBService(HttpClient httpClient, IConfiguration configuration, TMDBRepository tmdbRepository)
         {
             _httpClient = httpClient;
-            _apiKey = configuration["Tmdb:ApiKey"];
-            _baseUrl = configuration["Tmdb:BaseUrl"];
+            //_apiKey = configuration["Tmdb:ApiKey"];
+            //_baseUrl = configuration["Tmdb:BaseUrl"];
             _tmdbRepository = tmdbRepository;
         }
 

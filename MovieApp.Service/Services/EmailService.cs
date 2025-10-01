@@ -1,30 +1,36 @@
-﻿using SendGrid;
+﻿using Microsoft.Extensions.Options;
+using MovieApp.Service.Interfaces;
+using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieApp.Service.Services
 {
-    public class EmailService
+    public class EmailService : IEmailService
     {
+       
+        private readonly SecretsService _secretService;
+
+        public EmailService(SecretsService secretService) 
+        {
+            _secretService = secretService;
+
+        }
+
         public async Task SendEmail(string subject,string toEmail, string username, string message)
         {
 
-            Console.WriteLine("Sending email to this email:" + toEmail);
-          
-
-            var apiKey = "";
-
+            //get the api key from the secret service
+            var apiKey = _secretService.GetSendGridApiKey();
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("foldingchair_2024@outlook.com", "MyMovieApp");
-            //var subject = "Sending with SendGrid is Fun";
-            //var to = new EmailAddress("test@example.com", "Example User");
-            var to = new EmailAddress("toEmail", username);
-            //var plainTextContent = "and easy to do anywhere, even with C#";
+            var to = new EmailAddress("bipin2nipib@gmail.com", username);
             var plainTextContent = message;
             //var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
             var htmlContent = "";
