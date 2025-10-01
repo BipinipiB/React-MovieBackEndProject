@@ -54,7 +54,21 @@ namespace movie_backend.Controllers
         public async Task<IActionResult> RegisterUser(RegisterDto dto)
         {
             var result = await _userService.RegisterAsync(dto);
+
+            
+            //Send confirmation email
+
+            string emailSubject = "Welcome to MyMovieApp!";
+            string toEmail ="foldingchair@tgest.com";
+            string username = dto.Username;
+            string emailMessage = $"Hi {dto.Username},\n\nThank you for registering at MyMovieApp. We're excited to have you on board!\n\nBest regards,\nThe MyMovieApp Team";
+
+            EmailService emailService = new EmailService();
+
+            await emailService.SendEmail(emailSubject, toEmail, username, emailMessage);
+
             return Ok(result);
+
         }
 
         //POST : api/movieproxy/login
@@ -83,7 +97,7 @@ namespace movie_backend.Controllers
         //Only Autorized user can add favorite movie
         [Authorize]
         [HttpPost("favorites")]
-        public async Task<IActionResult> SaveFavorite( MovieDto movie)
+        public async Task<IActionResult> SaveFavorite( AddFavoriteDto favoriteMovieId)
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
 
@@ -94,7 +108,7 @@ namespace movie_backend.Controllers
 
             var userId = int.Parse(userIdClaim.Value);
 
-            var result = await _movieService.AddFavoriteMovies(movie.MovieId, userId);
+            var result = await _movieService.AddFavoriteMovies(favoriteMovieId.MovieId, userId);
 
             return Ok("Movie saved to favorites.");
         }
@@ -116,5 +130,7 @@ namespace movie_backend.Controllers
 
             return Ok(favMovies);
         }
+
+
     }
 }
