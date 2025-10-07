@@ -13,8 +13,8 @@ namespace MovieApp.Service.Services
     {
 
         private readonly AppSettings appSettings;
-      
-        public SecretsService(IOptions<AppSettings> options) 
+
+        public SecretsService(IOptions<AppSettings> options)
         {
             appSettings = options.Value;
             Console.WriteLine($"SecretService loaded SendGridApiKey: {appSettings.SendGridApiKey}");
@@ -27,7 +27,7 @@ namespace MovieApp.Service.Services
         }
 
         //returns a tuple with the token, issuer, and audience
-        public (string token, string Issuer, string Audience ) GetJWTTokenSecret()
+        public (string token, string Issuer, string Audience) GetJWTTokenSecret()
         {
             string token = appSettings.Token;
             string issuer = appSettings.Issuer;
@@ -35,6 +35,13 @@ namespace MovieApp.Service.Services
 
             return (token, issuer, audience);
 
+        }
+
+        //returns a OpenAI API Key
+
+        public string GetOpenAiApiKey()
+        {
+            return appSettings.OpenAiApiKey;
         }
     }
 }

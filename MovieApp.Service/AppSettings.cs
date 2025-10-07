@@ -13,5 +13,7 @@ namespace MovieApp.Service
         public string Audience { get; set; } = string.Empty;
 
         public string SendGridApiKey { get; set; } = string.Empty;
+
+        public string OpenAiApiKey { get; set; } = string.Empty;
     }
 }
